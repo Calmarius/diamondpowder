@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="hsFrame">
+		<title>Halo simulator</title>
+		<size>600,315</size>
+		<handler function="OnKeyDown" entry="EVT_KEY_DOWN" />
+		<object class="wxMenuBar" variable="MenuBar1" member="no">
+			<object class="wxMenu" variable="Menu1" member="no">
+				<label>&amp;File</label>
+				<object class="wxMenuItem" name="idMenuQuit" variable="MenuItem1" member="no">
+					<label>Quit</label>
+					<accel>Alt-F4</accel>
+					<help>Quit the application</help>
+					<handler function="OnQuit" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu3" member="yes">
+				<label>Crystals</label>
+				<object class="wxMenuItem" name="ID_MENU_OPENCRYSTALEDITOR" variable="openCrystalEditorMenuItem" member="yes">
+					<label>Crystal editor...</label>
+					<help>Opens the cristal editor where you can set the vertices of the crystal.</help>
+					<handler function="OnopenCrystalEditorMenuItemSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="ID_MENUITEM1" variable="crystalCompositionEditorMenuItem" member="yes">
+					<label>Crystal composition editor...</label>
+					<handler function="OnCrystalCompositionEditorMenuItemSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu2" member="yes">
+				<label>Rendering</label>
+				<object class="wxMenuItem" name="ID_MENUITEM2" variable="renderMenuItem" member="no">
+					<label>Render...</label>
+					<help>Renders the halo display with the given parameters</help>
+					<handler function="OnRenderMenuItemSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+		</object>
+		<object class="wxStatusBar" name="ID_STATUSBAR1" variable="StatusBar1" member="yes">
+			<fields>1</fields>
+			<widths>-1</widths>
+			<styles>wxSB_NORMAL</styles>
+		</object>
+	</object>
+</wxsmith>

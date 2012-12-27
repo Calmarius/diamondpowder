@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="CrystalEditorFrame">
+		<title>Crystal editor</title>
+		<size>605,282</size>
+		<handler function="OnRightDown" entry="EVT_RIGHT_DOWN" />
+		<object class="wxPanel" name="ID_PANEL1" variable="mainPanel" member="yes">
+			<pos>256,152</pos>
+			<style>0</style>
+			<handler function="OnPaint" entry="EVT_PAINT" />
+			<handler function="OnKeyDown" entry="EVT_KEY_DOWN" />
+			<handler function="OnKeyUp" entry="EVT_KEY_UP" />
+			<handler function="OnLeftDown" entry="EVT_LEFT_DOWN" />
+			<handler function="OnLeftUp" entry="EVT_LEFT_UP" />
+			<handler function="OnMouseMove" entry="EVT_MOTION" />
+			<handler function="OnMouseWheel" entry="EVT_MOUSEWHEEL" />
+		</object>
+		<object class="wxMenuBar" variable="MenuBar1" member="yes">
+			<object class="wxMenu" variable="Menu1" member="yes">
+				<label>Generate</label>
+				<object class="wxMenuItem" name="ID_MENUITEM_GENHEXAGONALPRISM" variable="generateHexagonalPrismMenuItem" member="no">
+					<label>Hexagonal prism...</label>
+					<help>Generates hexagonal prism</help>
+					<handler function="OnGenerateHexagonalPrismMenuItemSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="ID_MENUITEM3" variable="generateOctahedronMenuItem" member="yes">
+					<label>Octahedron</label>
+					<help>Generates regular octahedron</help>
+					<handler function="OnGenerateOctahedronMenuItemSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu2" member="yes">
+				<label>Manage</label>
+				<object class="wxMenuItem" name="ID_MENUITEM1" variable="addCrystalToDisplayItem" member="yes">
+					<label>Add this crystal to the display...</label>
+					<handler function="OnAddCrystalToDisplayItemSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu3" member="yes">
+				<label>Controls</label>
+				<object class="wxMenuItem" name="ID_MENUITEM2" variable="castRayMenuItem" member="yes">
+					<label>&amp;Cast Ray</label>
+					<accel>C</accel>
+					<help>Casts a ray on the mesh</help>
+					<handler function="OnCastRayMenuItemSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+		</object>
+		<object class="wxStatusBar" name="ID_STATUSBAR1" variable="StatusBar1" member="yes">
+			<fields>1</fields>
+			<widths>-10</widths>
+			<styles>wxSB_NORMAL</styles>
+		</object>
+	</object>
+</wxsmith>
