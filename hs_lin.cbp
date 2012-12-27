@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="hs" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/hs" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-pedantic" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-Wno-long-long" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/hs" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`wx-config --cflags`" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+		</Linker>
+		<Unit filename="AddCrystalToDisplayDialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="AddCrystalToDisplayDialog.h" />
+		<Unit filename="CrystalCompositionEditorDialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="CrystalCompositionEditorDialog.h" />
+		<Unit filename="CrystalEditorFrame.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="CrystalEditorFrame.h" />
+		<Unit filename="HaloRenderingThread.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="HaloRenderingThread.h" />
+		<Unit filename="HexagonalPrismGeneratorDialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="HexagonalPrismGeneratorDialog.h" />
+		<Unit filename="RenderSetupDialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="RenderSetupDialog.h" />
+		<Unit filename="RenderingProcessFrame.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="RenderingProcessFrame.h" />
+		<Unit filename="_master.cpp" />
+		<Unit filename="hsApp.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="hsApp.h" />
+		<Unit filename="hsMain.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="hsMain.h" />
+		<Unit filename="logging.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="logging.h" />
+		<Unit filename="matrix.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="matrix.h" />
+		<Unit filename="mesh.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="mesh.h" />
+		<Unit filename="utils.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="utils.h" />
+		<Unit filename="vector.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="vector.h" />
+		<Unit filename="wxsmith/hsframe.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="hsApp.cpp" main="hsFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/hsframe.wxs" src="hsMain.cpp" hdr="hsMain.h" name="hsFrame" language="CPP" />
+					<wxFrame wxs="wxsmith/CrystalEditorFrame.wxs" src="CrystalEditorFrame.cpp" hdr="CrystalEditorFrame.h" name="CrystalEditorFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/HexagonalPrismGeneratorDialog.wxs" src="HexagonalPrismGeneratorDialog.cpp" hdr="HexagonalPrismGeneratorDialog.h" name="HexagonalPrismGeneratorDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/AddCrystalToDisplayDialog.wxs" src="AddCrystalToDisplayDialog.cpp" hdr="AddCrystalToDisplayDialog.h" name="AddCrystalToDisplayDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/CrystalCompositionEditorDialog.wxs" src="CrystalCompositionEditorDialog.cpp" hdr="CrystalCompositionEditorDialog.h" name="CrystalCompositionEditorDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/RenderSetupDialog.wxs" src="RenderSetupDialog.cpp" hdr="RenderSetupDialog.h" name="RenderSetupDialog" language="CPP" />
+					<wxFrame wxs="wxsmith/RenderingProcessFrame.wxs" src="RenderingProcessFrame.cpp" hdr="RenderingProcessFrame.h" name="RenderingProcessFrame" language="CPP" />
+				</resources>
+			</wxsmith>
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
