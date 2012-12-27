@@ -1,0 +1,22 @@
+This is my ice halo simulator. 
+
+COMPILATION
+
+(WIP)
+
+INSTALLATION
+
+It does not need that.
+
+USAGE
+
+- Open the crystal editor editor in the Crystals/Crystal editor menu.
+- Generate a hexagonal prism.
+- Add the crystal to the display.
+- In the main window, review the crystal population in the crystal composition editor.
+- Then use the Rendering/Render menu to render the halo display.
+
+
+
+
+
