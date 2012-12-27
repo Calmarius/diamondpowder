@@ -16,6 +16,14 @@ USAGE
 - In the main window, review the crystal population in the crystal composition editor.
 - Then use the Rendering/Render menu to render the halo display.
 
+FUTURE PLANS
+
+To add: 
+
+- Ability to simulate pyramidal displays
+- Ability to use arbitrary shapes loaded from OBJ files.
+- Ability to simulate spatial halos. 
+
 
 
 
