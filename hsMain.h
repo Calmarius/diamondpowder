@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file hsMain.h
+ *
+ * Main window header and other stuff.
+ */
+
 /***************************************************************
  * Name:      hsMain.h
  * Purpose:   Defines Application Frame
@@ -67,27 +98,28 @@ struct RayPathDescriptor
 struct HaloRenderingSetupStruct
 {
     // INPUT ARGUMENTS
-    std::vector<CrystalDescriptor> crystals;
-    size_t crystalCount;
-    size_t imageSize; // a×a in pixels
-    double solarDiskRadius; // In degrees.
-    wxEvtHandler *notifee; // Sends event to this
-    bool cancelled; // Set true during the operation to cancel the rendering. (If rendering is done in a working thread.)
-    double solarAltitude; // in degrees
-    double pixelIntensity; // how intense a single pixel should be (default 1)
-    size_t maxRayCastInfoSize; // Maximum amount of raycasting info.
+    std::vector<CrystalDescriptor> crystals; ///< Describes the crystal population
+    size_t crystalCount; ///< Count of rays.
+    size_t imageSize; ///< a×a in pixels
+    double solarDiskRadius; ///< In degrees.
+    wxEvtHandler *notifee; ///< Sends event to this
+    bool cancelled; ///< Set true during the operation to cancel the rendering. (If rendering is done in a working thread.)
+    double solarAltitude; ///< in degrees
+    double pixelIntensity; ///< how intense a single pixel should be (default 1)
+    size_t maxRayCastInfoSize; ///< Maximum amount of raycasting info.
     // OUTPUT ARGUMENTS
-    bool resultValid; // True if calculation finished successfully.
-    size_t imageWidth; // in pixels.
-    size_t imageHeight; // in pixels.
-    // A buffer of integer values as a result of the rendering.
-    // It's stored in row mayor order.
-    // 6 images are stored, to get a full 360° panorama.
-    // The buffer is released if the operation is cancelled
+    bool resultValid; ///< True if calculation finished successfully.
+    size_t imageWidth; ///< in pixels.
+    size_t imageHeight; ///< in pixels.
+    /// A buffer of integer values as a result of the rendering.
+    /// It's stored in row mayor order.
+    /// 6 images are stored, to get a full 360° panorama.
+    /// The buffer is released if the operation is cancelled
     uint32_t *imageBuffer;
-    std::map<RayPathId, RayPathDescriptor> *rayPaths;
-    // A function that should be called to release the image buffer.
+    std::map<RayPathId, RayPathDescriptor> *rayPaths; ///< Ray paths for ray tracing.
+    /// A function that should be called to release the image buffer.
     void (*deleteBuffer)(uint32_t *buffer);
+    /// A function that should be called to release the ray tracing map.
     void (*deleteMap)(std::map<RayPathId, RayPathDescriptor> *rayPaths);
 };
 
@@ -103,13 +135,16 @@ struct CrystalDescriptor
 
         OT_MAX_ORIENTATIONTYPE
     };
+    /**
+     * Corresponding names of the the crystal orientations.
+     */
     static const char *orientationTypes[OT_MAX_ORIENTATIONTYPE];
 
     std::string name;
     Mesh mesh;
     OrientationType orientation;
     double populationWeight;
-    double wobbliness;
+    double wobbliness; ///< The variance of the normal distribution.
 };
 
 class CrystalEditorFrame;

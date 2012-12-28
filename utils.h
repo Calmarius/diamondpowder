@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file utils.h
+ *
+ * Some program wide utility functions.
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -69,25 +100,45 @@ bool castRayOnMesh(
     int &faceIndex
 );
 
+/**
+ * Transforms mesh points with the given matrix.
+ */
 void transformMesh(Mesh &mesh, const Matrix &transformation);
 
+/**
+ * If the given x value fall outside the [a,b] interval, it will be clamped to be inside in the interval.
+ */
 double clampIn(double x, double a, double b);
 
+/**
+ * Draws a 3D line.
+ */
 void drawLine3d(
-    wxDC &hdc,
-    const Matrix &combined,
-    const Vector3 &a,
-    const Vector3 &b
+    wxDC &hdc, ///< Device context
+    const Matrix &combined, ///< Combined rendering matrix.
+    const Vector3 &a, ///< Start point of the line.
+    const Vector3 &b ///< End point of the line.
 );
 
+/**
+ * Generates uniform random float in [0,1[ interval.
+ */
 inline double randFloat() {return rand() / (double)RAND_MAX;}
 
+/**
+ * Generates uniform random float in [min,max[ interval.
+ */
 inline double randFloat(double min, double max) {return min + randFloat() * (max - min);}
 
+/**
+ * Generates normal distribution random floating point number with the given expected value and variance.
+ */
 double randFloatNormal(double center, double variance);
 
+/**
+ * If the given x value fall outside the [a,b] interval, it will be clamped to be inside in the interval.
+ */
 int clampInInt(int x, int a, int b);
-double clampIn(double x, double a, double b);
 
 
 #endif // UTILS_H

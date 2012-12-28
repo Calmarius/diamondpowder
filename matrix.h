@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file matrix.h
+ *
+ * 4×4 matrix struct and its operations.
+ */
+
 #ifndef MATRIX_H
 #define MATRIX_H
 
@@ -60,19 +91,24 @@ Matrix createLookAtMatrix(const Vector3 &position, const Vector3 &target, const 
  * Creates a rotation matrix for a given axis and angle. Angle is in radians. Axis must be unit length
  */
 Matrix createRotationMatrix(const Vector3 &axis, double angle);
-
+/**
+ * Does a homogenous transformation of the given vector, the resulting 4D vector is stored in r.
+ */
 void transformVector4d(const Matrix &matrix, const Vector3 &vect, double *r);
+/**
+ * Transforms the given vector with the given matrix. Returns the transformed vector.
+ */
 Vector3 transformVector(const Matrix &matrix, const Vector3 &v);
 
 Matrix create3DTransformationMatrix
 (
-    Vector3 eye,
-    Vector3 target,
-    Vector3 up,
-    double left,
-    double top,
-    double width,
-    double height
+    Vector3 eye, ///< The point to look from
+    Vector3 target, ///< The target to look at.
+    Vector3 up, ///< The upward direction
+    double left, ///< Left of the viewport.
+    double top, ///< top of the viewport.
+    double width, ///< width of the viewport.
+    double height ///< height of the viewport.
 );
 
 #endif // MATRIX_H

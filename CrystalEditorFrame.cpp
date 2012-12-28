@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file CrystalEditorFrame.cpp
+ *
+ * Code for the crystal editor window.
+ */
+
 //(*InternalHeaders(CrystalEditorFrame)
 #include <wx/intl.h>
 #include <wx/string.h>
@@ -65,6 +96,8 @@ void CrystalEditorFrame::initialize(wxWindow *parent, wxWindowID id)
 	//*)
 
     mainPanel->SetFocus();
+
+    // Initialize red, green, blue rays.
 
     rayPaths[0].refractionIndex = RED_N;
     rayPaths[0].pen = wxPen(wxColor(255, 0, 0));
@@ -145,6 +178,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     crystalMesh.vertices.push_back(Vector3(1, 1, 1));
     crystalMesh.vertices.push_back(Vector3(1, -1, 1));
 
+    // back face
     vector<int> face;
     face.push_back(0);
     face.push_back(1);
@@ -152,6 +186,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     face.push_back(3);
     crystalMesh.faces.push_back(face);
 
+    // front face
     face.clear();
     face.push_back(4);
     face.push_back(5);
@@ -159,6 +194,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     face.push_back(7);
     crystalMesh.faces.push_back(face);
 
+    // left face
     face.clear();
     face.push_back(0);
     face.push_back(1);
@@ -166,6 +202,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     face.push_back(4);
     crystalMesh.faces.push_back(face);
 
+    // right face
     face.clear();
     face.push_back(2);
     face.push_back(3);
@@ -173,6 +210,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     face.push_back(6);
     crystalMesh.faces.push_back(face);
 
+    // top face
     face.clear();
     face.push_back(1);
     face.push_back(5);
@@ -180,6 +218,7 @@ CrystalEditorFrame::CrystalEditorFrame(std::vector<CrystalDescriptor> &_crystalM
     face.push_back(2);
     crystalMesh.faces.push_back(face);
 
+    // bottom face
     face.clear();
     face.push_back(0);
     face.push_back(4);
@@ -258,23 +297,7 @@ void CrystalEditorFrame::OnPaint(wxPaintEvent& event)
             }
         }
     }
-/*
-    for (int j = 0; j < COLOR_COUNT; j++)
-    {
-        std::vector<Vector3> &rayPath = rayPaths[j].rayPath;
-        dc.SetPen(rayPaths[j].pen);
-        if (rayPath.size())
-        {
-            for (size_t i = 0; i < rayPath.size() - 1; i++)
-            {
-                Vector3 p1 = transformVector(combinedMatrix, rayPath[i]);
-                Vector3 p2 = transformVector(combinedMatrix, rayPath[i + 1]);
-                dc.DrawLine(p1.x, p1.y, p2.x, p2.y);
-            }
-        }
-    }
-*/
-    // Render the mesh
+    // Render the mesh wireframe
     dc.SetPen(*wxWHITE_PEN);
     renderMeshOnDC(
         dc,
@@ -288,6 +311,7 @@ void CrystalEditorFrame::OnLeftDown(wxMouseEvent& event)
 {
     if (rayCastingMode)
     {
+        // Cast a ray towards the clicked point.
         int width, height;
         GetClientSize(&width, &height);
         double unitLength = min(width, height);
@@ -334,8 +358,6 @@ void CrystalEditorFrame::updateRayPaths()
 void CrystalEditorFrame::OnMouseMove(wxMouseEvent& event)
 {
     if (!dragging) return;
-
-//    const double ROTATION_SCALE = 0.001 * distance;
 
     // Turn mouse movement to a movement of a virtual trackball (which is as big as the window).
     Vector3 currentMousePos(event.GetX(), event.GetY(), 0);
@@ -401,6 +423,7 @@ void CrystalEditorFrame::OnMouseMove(wxMouseEvent& event)
 
 void CrystalEditorFrame::OnMouseWheel(wxMouseEvent& event)
 {
+    // Zooming in and out.
     int rotation = event.GetWheelRotation();
     const double ROTATION_FACTOR = 0.01;
     const double SCALE_EXPONENT = 0.95;
@@ -413,6 +436,7 @@ void CrystalEditorFrame::OnMouseWheel(wxMouseEvent& event)
 
 void CrystalEditorFrame::OnKeyDown(wxKeyEvent& event)
 {
+    // Controlling the view.
     Matrix T;
     Vector3 tmp;
     int keyCode = event.GetKeyCode();

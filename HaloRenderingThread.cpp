@@ -1,3 +1,29 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
 DEFINE_EVENT_TYPE(wxEVT_HALO_RENDERING_THREAD_NOTIFY)
 
 void HaloRenderingThread::sendNotifyString(const wxString &str, int terminate)
@@ -33,11 +59,13 @@ Matrix HaloRenderingThread::getOrientationMatrix(CrystalDescriptor::OrientationT
         break;
         case CrystalDescriptor::OT_PARRY:
         {
+            /* For hexagonal prisms, one side face is horizontal. */
             m = createRotationMatrix(Vector3(0, 1, 0), randFloat(0, 3.1415926536));
         }
         break;
         case CrystalDescriptor::OT_COLUMN:
         {
+            /* Main axis horizontal. */
             Matrix n = createRotationMatrix(Vector3(0, 0, 1), randFloat(0, 3.1415926536));
             Matrix o = createRotationMatrix(Vector3(0, 1, 0), randFloat(0, 3.1415926536));
             m = n % o;
@@ -45,11 +73,13 @@ Matrix HaloRenderingThread::getOrientationMatrix(CrystalDescriptor::OrientationT
         break;
         case CrystalDescriptor::OT_PLATE:
         {
+            /* Main axis vertical. */
             m = createRotationMatrix(Vector3(1, 0, 0), 3.14159265636 * 0.5) % createRotationMatrix(Vector3(0, 1, 0), randFloat(0, 3.1415926536));
         }
         break;
         case CrystalDescriptor::OT_LOWITZ:
         {
+            /* Rotation around a diagonal axis. The axis is horizontal.*/
             m =
                 createRotationMatrix(Vector3(1, 0, 0), 3.14159265636 * randFloat(-3.1415 * 0.5, 3.1415 * 0.5)) %
                 createRotationMatrix(Vector3(0, 1, 0), randFloat(0, 3.1415926536));
@@ -146,16 +176,19 @@ wxThread::ExitCode  HaloRenderingThread::Entry()
 
     const int N_COLORS = sizeof(colors) / sizeof(colors[0]);
 
+    // Cast many rays.
     for (size_t i = 0; i < setupStruct.crystalCount; i++)
     {
         if (setupStruct.cancelled)
         {
+            // If the user shut the rendering down...
             delete[] setupStruct.imageBuffer;
             setupStruct.imageBuffer = 0;
             return 0;
         }
         if (!crystalsRemaining)
         {
+            // We iterate through the crystals based on their population weights.
             crystalTypeIndex++;
             if (crystalTypeIndex >= N_CRYSTAL_TYPES) crystalTypeIndex = 0;
             currentDescriptor = &setupStruct.crystals[crystalTypeIndex];
@@ -212,6 +245,7 @@ wxThread::ExitCode  HaloRenderingThread::Entry()
             realSunPos
         );
         computeRayPathInGlassMesh(currentMesh, currentColor.refractionIndex, realSunPos + offset, -realSunPos, 0.01, rayPaths);
+        /* Project rays on the six planes. */
         for (size_t j = 0; j < rayPaths.size(); j++)
         {
             RayPath &current = rayPaths[j];
@@ -219,8 +253,6 @@ wxThread::ExitCode  HaloRenderingThread::Entry()
 
             Vector3 exitDir = current[pathLength - 1].first - current[pathLength - 2].first;
             Vector3 projectionDir = -exitDir;
-            /*log_var(RAYCASTING_LOG, projectionDir);
-            log_var(RAYCASTING_LOG, ~projectionDir);*/
 
             double xPos, yPos;
             // select the plane to project on.
@@ -275,6 +307,7 @@ wxThread::ExitCode  HaloRenderingThread::Entry()
                 xPos = xm * projectionDir.x / fabs(projectionDir.z) * halfImageSize + halfImageSize;
                 yPos = -ym * projectionDir.y / fabs(projectionDir.z) * halfImageSize + halfImageSize;
             }
+            // Calculate the new intensity of the pixel.
             xPos = clampInInt(xPos, 0, size - 1);
             yPos = clampInInt(yPos, 0, size - 1);
             int prevPixel = plane[(int)(yPos) * size + (int)(xPos)];
@@ -330,7 +363,7 @@ wxThread::ExitCode  HaloRenderingThread::Entry()
 
 
     evt.SetString(wxT("Completed."));
-    evt.SetInt(1);
+    evt.SetInt(1); //< 1 means the operation is finished.
     setupStruct.resultValid = true;
     setupStruct.notifee->AddPendingEvent(evt);
     return 0;

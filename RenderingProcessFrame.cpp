@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file RenderingProcessFrame.cpp
+ *
+ * Shows the rendering process and the result.
+ */
+
 #include "RenderingProcessFrame.h"
 
 //(*InternalHeaders(RenderingProcessFrame)
@@ -116,10 +147,13 @@ void RenderingProcessFrame::OnThreadNotify(wxCommandEvent &event)
     renderingStatusText->SetLabel(event.GetString());
     if (event.GetInt())
     {
+        // Nonzero int means the operation finished.
         operationFinished = true;
         cancelButton->SetLabel(wxT("Finish"));
         saveBitmapsButton->Enable();
         if (!setupStruct.resultValid) return;
+        // If the result is valid, so populate the bitmaps.
+        // FIXME: This is very ineffective...
         for (size_t k = 0; k < 6; k++)
         {
             wxMemoryDC bdc(*bitmaps[k]);
@@ -163,16 +197,6 @@ void RenderingProcessFrame::OnClose(wxCloseEvent& event)
 void RenderingProcessFrame::OnPaint(wxPaintEvent& event)
 {
     wxPaintDC hdc(this);
-
-    /*
-    for (int j = 0; j < 2; j++)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            hdc.DrawBitmap(*bitmaps[j * 3 + i], i * setupStruct.imageSize + 10, j * setupStruct.imageSize + 10);
-        }
-    }
-    */
 }
 
 void RenderingProcessFrame::OnMainpanelPaint(wxPaintEvent& event)
@@ -206,6 +230,7 @@ void RenderingProcessFrame::OnSaveBitmapsButtonClick(wxCommandEvent& event)
 
 void RenderingProcessFrame::OnLeftDown(wxMouseEvent& event)
 {
+    // This is used to open the ray path that contributed to the pixel.
     int m = setupStruct.imageSize; //< Size of a single image plane;
     // Get scroll positions
     int sx, sy;
@@ -232,13 +257,10 @@ void RenderingProcessFrame::OnLeftDown(wxMouseEvent& event)
     int px = x - bitmapLocations[planeId].x;
     int py = y - bitmapLocations[planeId].y;
 
-    printf("Selected ray: Plate: %d, x: %d, y: %d\n", planeId, px, py);
-
     map<RayPathId, RayPathDescriptor>::iterator it = setupStruct.rayPaths->find(RayPathId(planeId, px, py));
 
     if (it != setupStruct.rayPaths->end())
     {
-        printf("Ray found!\n");
         // Pixel found open crystal editor frame
         CrystalEditorFrame *editorframe = new CrystalEditorFrame(it->second, this);
         editorframe->Show();

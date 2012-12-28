@@ -1,3 +1,34 @@
+/*
+Copyright (c) 2012, Dávid Csirmaz
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/**
+ * @file utils.cpp
+ *
+ * Some global utility functions.
+ */
+
 using namespace std;
 
 void drawLine3d(
@@ -13,17 +44,6 @@ void drawLine3d(
 
     transformVector4d(combined, a, A);
     transformVector4d(combined, b, B);
-    /*
-    log_var(RENDERING_LOG, A[0]);
-    log_var(RENDERING_LOG, A[1]);
-    log_var(RENDERING_LOG, A[2]);
-    log_var(RENDERING_LOG, A[3]);
-
-    log_var(RENDERING_LOG, B[0]);
-    log_var(RENDERING_LOG, B[1]);
-    log_var(RENDERING_LOG, B[2]);
-    log_var(RENDERING_LOG, B[3]);
-    */
     // After the transformation W coordinate is the Z, Z coordinate is the W.
     // Here, positive Z is forward, negative is backward.
     // as we need to divide all others with it.
@@ -114,9 +134,6 @@ void renderMeshOnDC(
         {
             int k = j + 1 == face.size() ? 0 : j + 1;
             drawLine3d(hdc, combined, mesh.vertices[face[j]], mesh.vertices[face[k]]);
-/*            Vector3 a = transformVector(combined, mesh.vertices[face[j]]);
-            Vector3 b = transformVector(combined, mesh.vertices[face[k]]);
-            hdc.DrawLine(a.x, a.y, b.x, b.y);*/
         }
     }
 }
@@ -540,21 +557,6 @@ double randFloatNormal(double center, double variance)
     double v = rand() / (double)RAND_MAX;
     return sqrt(-2 * log(u)) * cos(2 * 3.1415 * v) * variance + center;
 }
-
-/*
-double randFloatNormal(double min, double max)
-{
-    const int N = 20;
-    double raw = 0;
-    for (int i = 0; i < N; i++)
-    {
-        raw += rand();
-    }
-    raw /= (double)N * RAND_MAX;
-    return min + raw * (max - min);
-}
-*/
-
 
 
 
