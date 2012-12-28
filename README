@@ -2,7 +2,24 @@ This is my ice halo simulator.
 
 COMPILATION
 
+You may use the Code::Blocks projects to compile it, but compilation is easy anyway.
+
+Linux:
+
+Install wxwidgets development files, if everything is installed, you can build the program by compiling the following single source file:
+g++ _master.cpp `wx-config --cflags` `wx-config --libs`
+
+Windows:
+
+Basically the Linux way works on Windows too, when using the MinGW toolchain.
+On there you will need to build the wxWidgets (as they don't provide precompiled binaries).
+
+Basically all you need is adding the header search path and the wxWidgets link library.
+
+I haven't compiled it from command line on Windows yet.
+
 (WIP)
+
 
 INSTALLATION
 

@@ -108,7 +108,6 @@
 		</Unit>
 		<Unit filename="utils.h" />
 		<Unit filename="vector.cpp">
-			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
 		<Unit filename="vector.h" />
