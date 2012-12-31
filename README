@@ -11,16 +11,13 @@ g++ _master.cpp `wx-config --cflags` `wx-config --libs` -o hs
 
 Windows:
 
+If you have MinGW you can build a debug version of it with the following command:
 
+g++ -I<wx_path>/include -I<wx_path>/lib/gcc_dll/mswud -L<wx_path>/lib/gcc_dll -mthreads -mwindows -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL -DwxUSE_UNICODE -g -D__WXDEBUG__ _master.cpp -lwxmsw28ud -o hs.exe
 
-Basically the same, but first you need to build wxWidgets for yourself, and 
-set the command line argument manually:
+You will need to compile wxWidgets with MinGW before proceed.
 
-g++ -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL -DwxUSE_UNICODE -Wno-attributes -Wall  -g -D__WXDEBUG__  -I<wx_widgets_path>\include -I<wx_widgets_path>\lib\gcc_dll\mswud -c _master.cpp -o _master.o
-g++ -L<wx_widgets_path>\lib\gcc_dll _master.o   -mthreads  -lwxmsw28ud  -mwindows -o hs.exe
-
-To use it you will also need mingwm10.dll and and the wxwidgets dll you built.
-
+Substitute the wxWidgets directory to the <wx_path>. I order to run it, you will need the compiled wxWidgets DLL, and the mingwm10.dll next to executable (the mingw dll is in your system if you installed MinGW).
 
 INSTALLATION
 
