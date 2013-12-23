@@ -1,91 +1,149 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="AddCrystalToDisplayDialog.cpp" open="1" top="0" tabpos="13">
-		<Cursor position="2137" topLine="49" />
+	<File name="HexagonalPrismGeneratorDialog.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="AddCrystalToDisplayDialog.h" open="1" top="0" tabpos="14">
-		<Cursor position="1984" topLine="35" />
+	<File name="vector.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1406" topLine="17" />
+		</Cursor>
 	</File>
-	<File name="CrystalCompositionEditorDialog.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="3133" topLine="87" />
+	<File name="mesh.cpp" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="CrystalCompositionEditorDialog.h" open="1" top="0" tabpos="9">
-		<Cursor position="1400" topLine="63" />
+	<File name="mesh.h" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="CrystalEditorFrame.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="11291" topLine="309" />
+	<File name="RenderSetupDialog.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="CrystalEditorFrame.h" open="1" top="0" tabpos="2">
-		<Cursor position="4673" topLine="109" />
+	<File name="hsMain.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="HaloRenderingThread.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="6825" topLine="336" />
+	<File name="HexagonalPrismGeneratorDialog.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="HaloRenderingThread.h" open="1" top="0" tabpos="12">
-		<Cursor position="2370" topLine="28" />
+	<File name="logging.h" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="HexagonalPrismGeneratorDialog.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="9112" topLine="233" />
+	<File name="hsMain.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="HexagonalPrismGeneratorDialog.h" open="1" top="0" tabpos="15">
-		<Cursor position="2951" topLine="62" />
+	<File name="CrystalCompositionEditorDialog.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="RenderSetupDialog.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="1388" topLine="95" />
+	<File name="_master.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="65" />
+		</Cursor>
 	</File>
-	<File name="RenderSetupDialog.h" open="1" top="0" tabpos="16">
-		<Cursor position="1384" topLine="63" />
+	<File name="hsApp.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="RenderingProcessFrame.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="6061" topLine="133" />
+	<File name="utils.cpp" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="RenderingProcessFrame.h" open="1" top="0" tabpos="11">
-		<Cursor position="3110" topLine="60" />
+	<File name="hsApp.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="_master.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="0" topLine="57" />
+	<File name="matrix.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="hsApp.cpp" open="1" top="0" tabpos="17">
-		<Cursor position="1515" topLine="143" />
+	<File name="CrystalEditorFrame.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="hsApp.h" open="1" top="0" tabpos="18">
-		<Cursor position="1358" topLine="18" />
+	<File name="RenderSetupDialog.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="hsMain.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="5287" topLine="180" />
+	<File name="logging.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="hsMain.h" open="1" top="0" tabpos="29">
-		<Cursor position="4878" topLine="164" />
+	<File name="HaloRenderingThread.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="logging.cpp" open="1" top="0" tabpos="19">
-		<Cursor position="1361" topLine="47" />
+	<File name="CrystalEditorFrame.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="logging.h" open="1" top="0" tabpos="20">
-		<Cursor position="1358" topLine="16" />
+	<File name="utils.h" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="matrix.cpp" open="1" top="0" tabpos="21">
-		<Cursor position="4296" topLine="168" />
+	<File name="CrystalCompositionEditorDialog.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="matrix.h" open="1" top="0" tabpos="22">
-		<Cursor position="3730" topLine="80" />
+	<File name="AddCrystalToDisplayDialog.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="mesh.cpp" open="1" top="0" tabpos="23">
-		<Cursor position="1584" topLine="59" />
+	<File name="HaloRenderingThread.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="mesh.h" open="1" top="0" tabpos="24">
-		<Cursor position="1371" topLine="27" />
+	<File name="matrix.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="utils.cpp" open="1" top="0" tabpos="25">
-		<Cursor position="18590" topLine="541" />
+	<File name="RenderingProcessFrame.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="utils.h" open="1" top="0" tabpos="26">
-		<Cursor position="4451" topLine="108" />
+	<File name="AddCrystalToDisplayDialog.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="vector.cpp" open="1" top="0" tabpos="27">
-		<Cursor position="3034" topLine="124" />
+	<File name="RenderingProcessFrame.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
-	<File name="vector.h" open="1" top="1" tabpos="28">
-		<Cursor position="2438" topLine="55" />
+	<File name="vector.h" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

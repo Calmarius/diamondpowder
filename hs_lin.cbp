@@ -108,6 +108,7 @@
 		</Unit>
 		<Unit filename="utils.h" />
 		<Unit filename="vector.cpp">
+			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
 		<Unit filename="vector.h" />
@@ -118,13 +119,13 @@
 			<wxsmith version="1">
 				<gui name="wxWidgets" src="hsApp.cpp" main="hsFrame" init_handlers="necessary" language="CPP" />
 				<resources>
-					<wxFrame wxs="wxsmith/hsframe.wxs" src="hsMain.cpp" hdr="hsMain.h" name="hsFrame" language="CPP" />
-					<wxFrame wxs="wxsmith/CrystalEditorFrame.wxs" src="CrystalEditorFrame.cpp" hdr="CrystalEditorFrame.h" name="CrystalEditorFrame" language="CPP" />
-					<wxDialog wxs="wxsmith/HexagonalPrismGeneratorDialog.wxs" src="HexagonalPrismGeneratorDialog.cpp" hdr="HexagonalPrismGeneratorDialog.h" name="HexagonalPrismGeneratorDialog" language="CPP" />
-					<wxDialog wxs="wxsmith/AddCrystalToDisplayDialog.wxs" src="AddCrystalToDisplayDialog.cpp" hdr="AddCrystalToDisplayDialog.h" name="AddCrystalToDisplayDialog" language="CPP" />
-					<wxDialog wxs="wxsmith/CrystalCompositionEditorDialog.wxs" src="CrystalCompositionEditorDialog.cpp" hdr="CrystalCompositionEditorDialog.h" name="CrystalCompositionEditorDialog" language="CPP" />
-					<wxDialog wxs="wxsmith/RenderSetupDialog.wxs" src="RenderSetupDialog.cpp" hdr="RenderSetupDialog.h" name="RenderSetupDialog" language="CPP" />
-					<wxFrame wxs="wxsmith/RenderingProcessFrame.wxs" src="RenderingProcessFrame.cpp" hdr="RenderingProcessFrame.h" name="RenderingProcessFrame" language="CPP" />
+					<wxFrame wxs="wxsmith/hsframe.wxs" src="hsMain.cpp" hdr="hsMain.h" fwddecl="0" i18n="1" name="hsFrame" language="CPP" />
+					<wxFrame wxs="wxsmith/CrystalEditorFrame.wxs" src="CrystalEditorFrame.cpp" hdr="CrystalEditorFrame.h" fwddecl="0" i18n="1" name="CrystalEditorFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/HexagonalPrismGeneratorDialog.wxs" src="HexagonalPrismGeneratorDialog.cpp" hdr="HexagonalPrismGeneratorDialog.h" fwddecl="0" i18n="1" name="HexagonalPrismGeneratorDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/AddCrystalToDisplayDialog.wxs" src="AddCrystalToDisplayDialog.cpp" hdr="AddCrystalToDisplayDialog.h" fwddecl="0" i18n="1" name="AddCrystalToDisplayDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/CrystalCompositionEditorDialog.wxs" src="CrystalCompositionEditorDialog.cpp" hdr="CrystalCompositionEditorDialog.h" fwddecl="0" i18n="1" name="CrystalCompositionEditorDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/RenderSetupDialog.wxs" src="RenderSetupDialog.cpp" hdr="RenderSetupDialog.h" fwddecl="0" i18n="1" name="RenderSetupDialog" language="CPP" />
+					<wxFrame wxs="wxsmith/RenderingProcessFrame.wxs" src="RenderingProcessFrame.cpp" hdr="RenderingProcessFrame.h" fwddecl="0" i18n="1" name="RenderingProcessFrame" language="CPP" />
 				</resources>
 			</wxsmith>
 			<debugger />
